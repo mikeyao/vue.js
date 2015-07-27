@@ -1,0 +1,7 @@
+{
+"target":0,
+"commit":{"name":"Commit","value":17177777},
+"gapData":
+[{"time":"2015-06-11T07:00:00.000Z","commit":{"name":"Commit","value":17177777},"target":0},
+ {"time":"2015-06-18T07:00:00.000Z","commit":{"name":"Commit","value":17177777},"target":0}]
+}
