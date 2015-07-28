@@ -1,21 +1,10 @@
 new Vue({
-  el: '#demo',
+  el: '#scenario-chart',
   data: {
-    name: 'Mike',
-    names: ['Yao', 'Raymond', 'Matt']
+    segments : [30, 10, 15]
   },
-  methods: {
-    addName: function(){
-      this.names.push(this.newName);
-      this.newName = "";
-    },
+  
+  ready: function(){
 
-    onKeyup: function(){
-      console.log('Key up!');
-    },
-
-    onBlur: function(){
-      console.log('Tab!')
-    }
   }
 });
