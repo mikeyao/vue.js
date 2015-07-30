@@ -6,15 +6,18 @@
   <link rel="stylesheet" href="app.css">
   <script src="lib/d3.js"></script>
   <script src="lib/vue.js"></script>
-  <style type="text/css">
-    #scenario-chart {
-      background-color: #CCC
-    }
-
-  </style>
 </head>
-<body>
-  <div id="scenario-chart"></div>
+<body id="scenario-chart">
+  <script type="x-template" id="coupon-template">
+    <input type="text" v-model="coupon" v-on="keyup: whenCouponHasBeenEntered | key 13">
+    <span>{{message}}</span>
+    {{$data | json}}
+  </script>
+  <h1 v-show="coupon">You entered the coupon code: {{coupon}}</h1>
+  
+  <coupon when-applied="{{ setCoupon }}"></coupon>
+  
+  {{$data | json}}
   <script src="app.js"></script>
 </body>
 </html>

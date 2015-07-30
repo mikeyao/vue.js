@@ -1,51 +1,42 @@
-var drawDeals = function(dataset){
+Vue.component('coupon', {
+  template: '#coupon-template',
 
-  var multiplier = 4;
-  var colorScale = ['blue', 'yellow', 'green'];
+  props: ['when-applied'],
 
-  var dataTotal = dataset.reduce(function(prev, curr){
-    return prev + curr;
-  }, 0);
+  data: function(){
+    return {
+      coupon: 'yaotime',
+      message: ''
+    }
+  },
 
-  var dataAccumulates = [];
-  var dataSofar = 0;
-  for (var i = 0; i < dataset.length; i++){
-    dataSofar += dataset[i];
-    dataAccumulates.push(dataSofar / dataTotal);
+  methods: {
+    whenCouponHasBeenEntered: function(){
+      this.validate();
+    },
+
+    validate: function(){
+      if (this.coupon === 'yaotime'){
+        console.log('Alert box!');
+        var response = this.whenApplied(this.coupon);
+        console.log('response: ' + response);
+
+        return this.message = '20% Off!';
+      }
+      this.message = "This coupon is invalid!";
+    }
   }
-  console.log(dataAccumulates);
-  var svg = d3.select('#scenario-chart').append('svg')
-    .attr('width', 400)
-    .attr('height', 300);
-
-
-  svg.selectAll('rect')
-    .data(dataset)
-    .enter()
-    .append('rect')
-    .attr('x', function(d, i){
-      return 0;
-    })
-    .attr('y', function(d, i){
-      return 300 - dataAccumulates[i] * 300;
-    })
-    .attr('width', 10)
-    .attr('height', function(d){
-      return (d / dataTotal) * 300;
-    })
-    .attr('fill', function(d, i){
-      return colorScale[i];
-    })
-    
-};
+});
 
 new Vue({
   el: '#scenario-chart',
-  data: {
-    dataset : [30, 10, 15]
-  },
 
-  ready: function(){
-    drawDeals(this.dataset);
+  methods: {
+    setCoupon: function(coupon){
+      console.log('Set coupon:'+ coupon);
+      this.$set('coupon', coupon);
+
+      return 'thanks';
+    }
   }
 });
