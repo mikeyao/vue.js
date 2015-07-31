@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Playground d3</title>
-  <link rel="stylesheet" href="app.css">
-  <script src="lib/d3.js"></script>
-  <script src="lib/vue.js"></script>
+	<title>Playground</title>
+  <script src="lib/vue.js"></script><!-- Vue.js v0.12.8 -->
 </head>
-<body id="scenario-chart">
-  <script type="x-template" id="coupon-template">
-    <input type="text" v-model="coupon" v-on="keyup: whenCouponHasBeenEntered | key 13">
+<body id="scenarios">
+  <script type="x-template" id="projection-template">
+    <label>Enter username: </label>
+    <input type="text" v-model="username" v-on="keyup: whenUsernameHasBeenEntered | key 13">
+    <br><br>
     <span>{{message}}</span>
-    {{$data | json}}
+    <pre>{{$data | json}}</pre>
   </script>
-  <h1 v-show="coupon">You entered the coupon code: {{coupon}}</h1>
+  <h1 v-show="username">{{username}}'s projection: {{projection}}</h1>
   
-  <coupon when-applied="{{ setCoupon }}"></coupon>
+  <projection get-projection="{{ getProjectionByUsername }}"></projection>
   
-  {{$data | json}}
+  <br><br>
+
+
+  <projection-chart></projection-chart>
+
+
   <script src="app.js"></script>
 </body>
 </html>
