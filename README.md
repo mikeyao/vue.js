@@ -1,5 +1,5 @@
 # vue.js
 
 Run: 
-npm install
-grunt server
+## npm install
+## grunt server
